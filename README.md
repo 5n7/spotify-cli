@@ -41,5 +41,6 @@ Available kinds are following.
 - album
 - album-artist
 - artist
+- playback
 - title
 - url
