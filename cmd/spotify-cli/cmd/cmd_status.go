@@ -34,6 +34,12 @@ func runStatus(cmd *cobra.Command, args []string) error {
 			return err
 		}
 		fmt.Println(artist)
+	case "playback":
+		playback, err := cli.Status(spotify.KindPlayback)
+		if err != nil {
+			return err
+		}
+		fmt.Println(playback)
 	case "title":
 		title, err := cli.Status(spotify.KindTitle)
 		if err != nil {
@@ -60,7 +66,7 @@ var statusCmd = &cobra.Command{
 }
 
 func init() { //nolint:gochecknoinits
-	statusCmd.Flags().StringVar(&kind, "kind", "", "kind (album|album-artist|artist|title|url)")
+	statusCmd.Flags().StringVar(&kind, "kind", "", "kind (album|album-artist|artist|plackback|title|url)")
 
 	rootCmd.AddCommand(statusCmd)
 }
