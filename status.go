@@ -1,8 +1,10 @@
 package spotify
 
 import (
+	"bytes"
 	"fmt"
 	"strings"
+	"text/template"
 
 	"github.com/dawidd6/go-spotify-dbus"
 )
@@ -20,7 +22,39 @@ const (
 
 var ListSeparator string = ", "
 
-func (c *CLI) Status(kind Kind) (string, error) {
+func MustString(str string, err error) string {
+	if err != nil {
+		panic(err)
+	}
+	return str
+}
+
+func (c *CLI) StatusFromFormat(format string) (string, error) {
+	tmpl := template.Must(template.New("status").Parse(format))
+	status := struct {
+		Album       string
+		AlbumArtist string
+		Artist      string
+		Playback    string
+		Title       string
+		URL         string
+	}{
+		MustString(c.StatusFromKind(KindAlbum)),
+		MustString(c.StatusFromKind(KindAlbumArtist)),
+		MustString(c.StatusFromKind(KindArtist)),
+		MustString(c.StatusFromKind(KindPlayback)),
+		MustString(c.StatusFromKind(KindTitle)),
+		MustString(c.StatusFromKind(KindURL)),
+	}
+
+	var buf bytes.Buffer
+	if err := tmpl.Execute(&buf, status); err != nil {
+		return ", err", err
+	}
+	return buf.String(), nil
+}
+
+func (c *CLI) StatusFromKind(kind Kind) (string, error) {
 	metadata, err := spotify.GetMetadata(c.conn)
 	if err != nil {
 		return "", err
