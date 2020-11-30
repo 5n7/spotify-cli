@@ -19,7 +19,7 @@ go get github.com/skmatz/spotify-cli/...
 ### Operate
 
 ```console
-spotify-cli operate --operate [action]
+spotify-cli operate --action [action]
 ```
 
 Available actions are following.
@@ -33,7 +33,7 @@ Available actions are following.
 ### Status
 
 ```console
-spotify-cli status --status [kind]
+spotify-cli status --kind [kind]
 ```
 
 Available kinds are following.
