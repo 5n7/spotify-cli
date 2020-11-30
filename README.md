@@ -33,8 +33,18 @@ Available actions are following.
 ### Status
 
 ```console
+spotify-cli status --format [format]
 spotify-cli status --kind [kind]
 ```
+
+Available formats are following.
+
+- {{ .Album }}
+- {{ .AlbumArtist }}
+- {{ .Artist }}
+- {{ .Playback }}
+- {{ .Title }}
+- {{ .URL }}
 
 Available kinds are following.
 
