@@ -39,7 +39,7 @@ var operateCmd = &cobra.Command{
 }
 
 func init() { //nolint:gochecknoinits
-	operateCmd.Flags().StringVar(&action, "action", "", "action (next|pause|play|play-pause|previous)")
+	operateCmd.Flags().StringVarP(&action, "action", "a", "", "action (next|pause|play|play-pause|previous)")
 
 	rootCmd.AddCommand(operateCmd)
 }

@@ -89,9 +89,9 @@ var statusCmd = &cobra.Command{
 }
 
 func init() { //nolint:gochecknoinits
-	statusCmd.Flags().StringVar(&format, "format", "",
+	statusCmd.Flags().StringVarP(&format, "format", "f", "",
 		"format ({{ .Album }}|{{ .AlbumArtist }}|{{ .Artist }}|{{ .Playback }}|{{ .Title }}|{{ .URL }})")
-	statusCmd.Flags().StringVar(&kind, "kind", "", "kind (album|album-artist|artist|plackback|title|url)")
+	statusCmd.Flags().StringVarP(&kind, "kind", "k", "", "kind (album|album-artist|artist|plackback|title|url)")
 
 	rootCmd.AddCommand(statusCmd)
 }
