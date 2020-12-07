@@ -82,10 +82,11 @@ func runStatus(cmd *cobra.Command, args []string) error {
 }
 
 var statusCmd = &cobra.Command{
-	Use:   "status",
-	Short: "Get Spotify status via DBus",
-	Long:  "Get Spotify status via DBus.",
-	RunE:  runStatus,
+	Use:     "status",
+	Aliases: []string{"s"},
+	Short:   "Get Spotify status via DBus",
+	Long:    "Get Spotify status via DBus.",
+	RunE:    runStatus,
 }
 
 func init() { //nolint:gochecknoinits

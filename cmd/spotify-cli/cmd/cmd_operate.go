@@ -32,10 +32,11 @@ func runOperate(cmd *cobra.Command, args []string) error {
 }
 
 var operateCmd = &cobra.Command{
-	Use:   "operate",
-	Short: "Operate Spotify via DBus",
-	Long:  "Operate Spotify via DBus.",
-	RunE:  runOperate,
+	Use:     "operate",
+	Aliases: []string{"o"},
+	Short:   "Operate Spotify via DBus",
+	Long:    "Operate Spotify via DBus.",
+	RunE:    runOperate,
 }
 
 func init() { //nolint:gochecknoinits
